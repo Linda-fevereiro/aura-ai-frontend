@@ -1,6 +1,6 @@
 // Definindo a URL base do seu backend Node.js
 // ***** ESTA URL FOI ATUALIZADA PARA O SEU DEPLOY NO VERCEL *****
-const API_BASE_URL = 'https://aura-ai-backend.vercel.app/api'; // URL do backend no Vercel
+const API_BASE_URL = 'https://aura-ai-backend.vercel.app/'; // URL do backend no Vercel
 
 // Função para exibir mensagens personalizadas (substitui alert())
 function showMessageModal(title, message, type = 'info') {

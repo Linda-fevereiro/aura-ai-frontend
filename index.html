@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura AI - Seu Assistente Pessoal</title>
+    <!-- Link para Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Link para o seu arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
     <!-- Modal de Autenticação -->
     <div class="auth-modal active" id="authModal">
@@ -9,17 +20,13 @@
 
             <div class="auth-form" id="loginForm">
                 <div class="form-group">
-                    <label class="form-label">
-                        Email
-                        <input type="email" class="form-input" id="loginEmail" placeholder="seu@email.com">
-                    </label>
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="loginEmail" placeholder="seu@email.com">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">
-                        Senha
-                        <input type="password" class="form-input" id="loginPassword" placeholder="Sua senha">
-                    </label>
+                    <label class="form-label">Senha</label>
+                    <input type="password" class="form-input" id="loginPassword" placeholder="Sua senha">
                 </div>
 
                 <button class="auth-btn" id="loginBtn">Entrar</button>
@@ -35,31 +42,23 @@
 
             <div class="auth-form" id="registerForm" style="display: none;">
                 <div class="form-group">
-                    <label class="form-label">
-                        Nome
-                        <input type="text" class="form-input" id="registerName" placeholder="Seu nome completo">
-                    </label>
+                    <label class="form-label">Nome</label>
+                    <input type="text" class="form-input" id="registerName" placeholder="Seu nome completo">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">
-                        Email
-                        <input type="email" class="form-input" id="registerEmail" placeholder="seu@email.com">
-                    </label>
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="registerEmail" placeholder="seu@email.com">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">
-                        Senha
-                        <input type="password" class="form-input" id="registerPassword" placeholder="Crie uma senha">
-                    </label>
+                    <label class="form-label">Senha</label>
+                    <input type="password" class="form-input" id="registerPassword" placeholder="Crie uma senha">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">
-                        Confirmar Senha
-                        <input type="password" class="form-input" id="registerConfirm" placeholder="Repita sua senha">
-                    </label>
+                    <label class="form-label">Confirmar Senha</label>
+                    <input type="password" class="form-input" id="registerConfirm" placeholder="Repita sua senha">
                 </div>
 
                 <button class="auth-btn" id="registerBtn">Criar Conta</button>
@@ -74,5 +73,139 @@
             </div>
         </div>
     </div>
-    <!-- ... restante do seu HTML ... -->
+
+    <div class="app-container" style="display: none;" id="appContent">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="logo-text">Aura AI</div>
+                </div>
+            </div>
+
+            <button class="new-chat-btn" id="newChatBtn">
+                <i class="fas fa-plus"></i>
+                <span>Novo Chat</span>
+            </button>
+
+            <div class="chat-history" id="chatHistory">
+                <!-- Histórico de conversas será carregado aqui -->
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="user-avatar" id="userAvatar">US</div>
+                <div class="user-info">
+                    <div class="user-name" id="userName">Usuário</div>
+                    <div class="user-email" id="userEmail">usuario@exemplo.com</div>
+                </div>
+                <i class="fas fa-ellipsis-v" id="userMenuBtn"></i>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <i class="fas fa-bars" id="menuToggle"></i>
+                <div class="chat-title" id="currentChatTitle">Novo Chat</div>
+                <div class="chat-status">
+                    <div class="status-dot"></div>
+                    <span>Online</span>
+                </div>
+                <div class="language-selector" id="languageSelector">
+                    <i class="fas fa-globe"></i>
+                    <span>Português</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="language-dropdown" id="languageDropdown">
+                    <div class="language-option" data-lang="pt">
+                        <img src="https://flagcdn.com/w20/br.png" class="language-flag" alt="Português">
+                        <span>Português</span>
+                    </div>
+                    <div class="language-option" data-lang="en">
+                        <img src="https://flagcdn.com/w20/us.png" class="language-flag" alt="Inglês">
+                        <span>Inglês</span>
+                    </div>
+                    <div class="language-option" data-lang="es">
+                        <img src="https://flagcdn.com/w20/es.png" class="language-flag" alt="Espanhol">
+                        <span>Espanhol</span>
+                    </div>
+                    <div class="language-option" data-lang="fr">
+                        <img src="https://flagcdn.com/w20/fr.png" class="language-flag" alt="Francês">
+                        <span>Francês</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-message">
+                    <div class="welcome-title">Olá! Eu sou a Aura AI</div>
+                    <div class="welcome-text">
+                        Seu assistente pessoal inteligente com conhecimentos em diversos assuntos, incluindo futebol, celebridades, curiosidades e matérias escolares.
+                        <br><br>
+                        Comece digitando sua mensagem ou selecione uma conversa anterior.
+                    </div>
+
+                    <div class="capabilities-grid">
+                        <div class="capability">
+                            <div class="capability-icon"><i class="fas fa-futbol"></i></div>
+                            <div class="capability-title">Futebol</div>
+                            <div class="capability-desc">Estatísticas, jogadores, times e histórias do mundo do futebol</div>
+                        </div>
+
+                        <div class="capability">
+                            <div class="capability-icon"><i class="fas fa-star"></i></div>
+                            <div class="capability-title">Famosos</div>
+                            <div class="capability-desc">Informações sobre celebridades, filmes, música e cultura pop</div>
+                        </div>
+
+                        <div class="capability">
+                            <div class="capability-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div class="capability-title">Curiosidades</div>
+                            <div class="capability-desc">Fatos interessantes e conhecimentos aleatórios sobre diversos temas</div>
+                        </div>
+
+                        <div class="capability">
+                            <div class="capability-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="capability-title">Matérias Escolares</div>
+                            <div class="capability-desc">Ajuda com matemática, ciências, história e outras disciplinas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input">
+                <div class="input-container">
+                    <textarea class="message-input" id="messageInput" placeholder="Digite sua mensagem..." rows="1"></textarea>
+                    <div class="input-actions">
+                        <button class="input-btn send-btn" id="sendButton">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Mensagem Personalizado (Substitui alert()) -->
+    <div class="message-modal-overlay" id="messageModalOverlay">
+        <div class="message-modal" id="messageModal">
+            <div class="message-modal-header">
+                <h3 id="messageModalTitle"></h3>
+                <button class="message-modal-close-btn" id="messageModalCloseBtn">&times;</button>
+            </div>
+            <div class="message-modal-body">
+                <p id="messageModalBody"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seu JavaScript principal -->
+    <script src="app.js"></script>
 </body>
+</html>
